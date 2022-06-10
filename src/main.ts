@@ -18,10 +18,10 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    ...importProvidersFrom(RouterModule.forRoot(appRoutes)),
-    ...configureStore({ router: routerReducer }),
-    ...configureRouterStore(),
-    ...configureStoreDevtools(),
-    ...configureEffects(),
+    importProvidersFrom(RouterModule.forRoot(appRoutes)),
+    configureStore({ router: routerReducer }),
+    configureRouterStore(),
+    configureStoreDevtools(),
+    configureEffects(),
   ],
 }).catch((err) => console.error(err));

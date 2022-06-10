@@ -22,8 +22,8 @@ export const musiciansRoutes: Route[] = [
       },
     ],
     providers: [
-      ...registerStoreFeature(musiciansFeature),
-      ...registerFeatureEffects([MusiciansApiEffects]),
+      registerStoreFeature(musiciansFeature),
+      registerFeatureEffects([MusiciansApiEffects]),
     ],
   },
 ];
