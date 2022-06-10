@@ -21,7 +21,7 @@ import {
 import { StoreDevtoolsConfig, StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // @ngrx/store
-export function configureStore<T, V extends Action = Action>(
+export function provideStore<T, V extends Action = Action>(
   reducers?: ActionReducerMap<T, V> | InjectionToken<ActionReducerMap<T, V>>,
   config?: RootStoreConfig<T, V>
 ): ImportedNgModuleProviders {
@@ -30,20 +30,20 @@ export function configureStore<T, V extends Action = Action>(
   );
 }
 
-export function registerStoreFeature<T, V extends Action = Action>(
+export function provideStoreFeature<T, V extends Action = Action>(
   featureName: string,
   reducers: ActionReducerMap<T, V> | InjectionToken<ActionReducerMap<T, V>>,
   config?: StoreConfig<T, V> | InjectionToken<StoreConfig<T, V>>
 ): ImportedNgModuleProviders;
-export function registerStoreFeature<T, V extends Action = Action>(
+export function provideStoreFeature<T, V extends Action = Action>(
   featureName: string,
   reducer: ActionReducer<T, V> | InjectionToken<ActionReducer<T, V>>,
   config?: StoreConfig<T, V> | InjectionToken<StoreConfig<T, V>>
 ): ImportedNgModuleProviders;
-export function registerStoreFeature<T, V extends Action = Action>(
+export function provideStoreFeature<T, V extends Action = Action>(
   feature: FeatureSlice<T, V>
 ): ImportedNgModuleProviders;
-export function registerStoreFeature<T, V extends Action = Action>(
+export function provideStoreFeature<T, V extends Action = Action>(
   nameOrFeature: string | FeatureSlice<T, V>,
   reducers?:
     | ActionReducerMap<T, V>
@@ -58,27 +58,27 @@ export function registerStoreFeature<T, V extends Action = Action>(
 }
 
 // @ngrx/effects
-export function configureEffects(
+export function provideEffects(
   rootEffects?: Type<any>[]
 ): ImportedNgModuleProviders {
   return importProvidersFrom(EffectsModule.forRoot(rootEffects));
 }
 
-export function registerFeatureEffects(
+export function provideFeatureEffects(
   featureEffects: Type<any>[]
 ): ImportedNgModuleProviders {
   return importProvidersFrom(EffectsModule.forFeature(featureEffects));
 }
 
 // @ngrx/router-store
-export function configureRouterStore(
+export function provideRouterStore(
   config?: StoreRouterConfig
 ): ImportedNgModuleProviders {
   return importProvidersFrom(StoreRouterConnectingModule.forRoot(config));
 }
 
 // @ngrx/store-devtools
-export function configureStoreDevtools(
+export function provideStoreDevtools(
   config?: StoreDevtoolsConfig
 ): ImportedNgModuleProviders {
   return importProvidersFrom(StoreDevtoolsModule.instrument(config));

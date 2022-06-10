@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 import {
-  registerFeatureEffects,
-  registerStoreFeature,
+  provideFeatureEffects,
+  provideStoreFeature,
 } from '../standalone-ngrx';
 import { musiciansFeature } from '@musicians/state';
 import { MusicianListComponent } from './containers/musician-list.component';
@@ -22,8 +22,8 @@ export const musiciansRoutes: Route[] = [
       },
     ],
     providers: [
-      registerStoreFeature(musiciansFeature),
-      registerFeatureEffects([MusiciansApiEffects]),
+      provideStoreFeature(musiciansFeature),
+      provideFeatureEffects([MusiciansApiEffects]),
     ],
   },
 ];
